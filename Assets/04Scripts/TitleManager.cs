@@ -17,6 +17,8 @@ public class TitleManager : MonoBehaviour
     private GameObject obj;
     private bool isHaveData;
 
+    private InputField inputField;
+
     private void Awake()
     {
         obj = GameObject.Find("EnterText");
@@ -36,12 +38,14 @@ public class TitleManager : MonoBehaviour
         deleteBtn = obj.GetComponent<Button>();
         deleteBtn.onClick.AddListener(OnClick_DeleteBtn);
 
+        //inputField.onValueChanged.AddListener(OnChanged_Nickname);
+
         InitScene();
     }
 
     public void InitScene()
     {
-        isHaveData = false; // 임시코드
+        isHaveData = GameManager.Inst.LoadData();
         if (isHaveData)
         {
             enterText.text = GameManager.Inst.PlayerInfo.userNickName + " 님 환영합니다.\n";
@@ -60,26 +64,58 @@ public class TitleManager : MonoBehaviour
         }
         else
         {
+            enterText.enabled = false;
             LeanTween.scale(createPopup, Vector2.one, 0.7f).setEase(LeanTweenType.easeInOutElastic);
         }
     }
 
     private string newNickName = "";
 
+    public void OnChanged_Nickname(string input)
+    {
+        Debug.Log(input);
+        newNickName = input;
+    }
+    // StartBtn 클릭 함수
     public void OnClick_StartBtn()
     {
-        if(newNickName.Length <= 2)
+        if(newNickName.Length >= 2)
         {
-            warningText.text = "닉네임의 형식이 올바르지 않습니다.";
+            GameManager.Inst.CreateUserData(newNickName); // GameMager의 Inst를 호출해 CreateUserData 함수를 호출
+            LeanTween.scale(createPopup, Vector2.zero, 0.7f).setEase(LeanTweenType.easeInOutElastic);
+            enterText.enabled = true;
+            GameManager.Inst.SaveData();
+            InitScene();
         }
         else
         {
-            LeanTween.scale(createPopup, Vector2.zero, 0.7f).setEase(LeanTweenType.easeInOutElastic);
+            WarningText("다른 닉네임을 입력해주세요!!");
         }
     }
 
     public void OnClick_DeleteBtn()
     {
-
+        WarningText("데이터가 삭제 되었습니다.");
+        GameManager.Inst.DeleteData();
+        InitScene();
     }
+
+    public void WarningText(string newMessage)
+    {
+        warningText.text = newMessage;
+        Color fromColor = Color.red;
+        fromColor.a = 0f;
+        Color toColor = Color.red;
+        toColor.a = 1f;
+
+        LeanTween.value(warningText.gameObject, UpdateColor, fromColor, toColor, 1f).setEase(LeanTweenType.easeInOutQuad);
+        LeanTween.value(warningText.gameObject, UpdateColor, toColor, fromColor, 1f).setEase(LeanTweenType.easeInOutQuad).setDelay(1f);
+    }
+
+    private void UpdateColor(Color value)
+    {
+        warningText.color = value;
+    }
+
+    
 }

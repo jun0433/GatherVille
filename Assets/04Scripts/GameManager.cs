@@ -23,11 +23,93 @@ public class GameManager : Singleton<GameManager>
 {
     private PlayerData pData;
 
+    // PlayerData를 다른 클래스에서 참조할 수 있게
     public PlayerData PlayerInfo
     {
         get => pData;
     }
 
+    private void Awake()
+    {
+        base.Awake();
+        datapath = Application.persistentDataPath + "/save";
+        pData = new PlayerData();
+
+
+        UpdateGMinfo();
+    }
+
+    public void UpdateGMinfo()
+    {
+        LoadData();
+    }
+
+    #region _Save&Delete_
+    private string datapath; // 데이터 경로를 저장할 변수
+
+    // 데이터를 저장하는 함수
+    public void SaveData()
+    {
+        // json 포맷
+        string data = JsonUtility.ToJson(pData);
+        File.WriteAllText(datapath, data); // datapath에 data를 저장
+    }
+
+    // 데이터를 불러올 수 있는지 확인하는 함수
+    public bool LoadData()
+    {
+        // datapath에 datafile이 존재하는지
+        if (File.Exists(datapath))
+        {
+            string data = File.ReadAllText(datapath); // datapath의 데이터를 data 변수에 저장
+            pData = JsonUtility.FromJson<PlayerData>(data); // pData에 JSON 형식으로 불러온 데이터를 저장
+            return true; // 데이터 존재 O
+        }
+
+        return false; // 데이터 존재 X
+    }
+
+    // 데이터를 삭제하는 함수
+    public void DeleteData()
+    {
+        File.Delete(datapath);
+    }
+
+    #endregion
+
+    #region _CreateData_
+    public void CreateUserData(string newNickName)
+    {
+        pData.userNickName = newNickName;
+        pData.gold = 0;
+        pData.uidCounter = 0;
+    }
+
+
+
+    #endregion
+
+    #region _ReadPlayerData_
+    public int PlayerGold
+    {
+        get => pData.gold;
+        set => pData.gold = value;
+    }
+
+    public string PlayerName
+    {
+        get => pData.userNickName;
+    }
+
+    public int PlayerUID
+    {
+        get
+        {
+            return ++pData.uidCounter;
+        }
+    }
+
+    #endregion
 
     #region _SceneChange_
     private SceneName nextLoadSceneName;
