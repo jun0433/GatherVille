@@ -17,7 +17,7 @@ public class TitleManager : MonoBehaviour
     private GameObject obj;
     private bool isHaveData;
 
-    private InputField inputField;
+    private TMP_InputField inputField;
 
     private void Awake()
     {
@@ -38,12 +38,17 @@ public class TitleManager : MonoBehaviour
         deleteBtn = obj.GetComponent<Button>();
         deleteBtn.onClick.AddListener(OnClick_DeleteBtn);
 
-        //inputField.onValueChanged.AddListener(OnChanged_Nickname);
 
-        InitScene();
+        obj = GameObject.Find("InputField");
+        inputField = obj.GetComponent<TMP_InputField>();
+        if(inputField != null)
+        {
+            inputField.onValueChanged.AddListener((newNickName) => OnChanged_Nickname(newNickName));
+        }
+        InitTitleScene();
     }
 
-    public void InitScene()
+    public void InitTitleScene()
     {
         isHaveData = GameManager.Inst.LoadData();
         if (isHaveData)
@@ -73,19 +78,22 @@ public class TitleManager : MonoBehaviour
 
     public void OnChanged_Nickname(string input)
     {
-        Debug.Log(input);
         newNickName = input;
     }
+
+
+
     // StartBtn 클릭 함수
     public void OnClick_StartBtn()
     {
-        if(newNickName.Length >= 2)
+        Debug.Log(gameObject.name);
+        if (newNickName.Length >= 2)
         {
-            GameManager.Inst.CreateUserData(newNickName); // GameMager의 Inst를 호출해 CreateUserData 함수를 호출
             LeanTween.scale(createPopup, Vector2.zero, 0.7f).setEase(LeanTweenType.easeInOutElastic);
             enterText.enabled = true;
+            GameManager.Inst.CreateUserData(newNickName); // GameMager의 Inst를 호출해 CreateUserData 함수를 호출
             GameManager.Inst.SaveData();
-            InitScene();
+            InitTitleScene();
         }
         else
         {
@@ -97,7 +105,7 @@ public class TitleManager : MonoBehaviour
     {
         WarningText("데이터가 삭제 되었습니다.");
         GameManager.Inst.DeleteData();
-        InitScene();
+        InitTitleScene();
     }
 
     public void WarningText(string newMessage)
