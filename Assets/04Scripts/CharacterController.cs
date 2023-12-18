@@ -4,14 +4,14 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class CharacterController : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 3f;
 
     private Rigidbody2D rig;
-    private CapsuleCollider2D col;
+    private BoxCollider2D col;
     private Animator anim;
 
     private float x, y;
@@ -21,7 +21,7 @@ public class CharacterController : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         rig.GetComponent<Rigidbody2D>().gravityScale = 0f;
-        col = GetComponent<CapsuleCollider2D>();
+        col = GetComponent<BoxCollider2D>();
         /*if(!TryGetComponent<Animator>(out anim))
         {
             Debug.Log("CharacterController.cs - Awake() - anim 참조 실패");
