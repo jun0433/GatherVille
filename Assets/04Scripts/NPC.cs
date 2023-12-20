@@ -28,10 +28,6 @@ public class NPC : MonoBehaviour
         {
             Debug.Log("NPC.cs - Awake() - col 참조 실패");
         }
-        else
-        {
-            col.isTrigger = true;
-        }
     }
 
     /*private void OnTriggerEnter2D(Collider other)

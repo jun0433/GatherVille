@@ -10,6 +10,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 3f;
 
+    public TownManager town = new TownManager();
+
     private Rigidbody2D rig;
     private CapsuleCollider2D col;
     private Animator anim;
@@ -17,7 +19,13 @@ public class CharacterController : MonoBehaviour
     private float h, v;
     private bool isHorizonMove;
     private Vector3 dir;
-    
+
+    private GameObject scanObj;
+    public GameObject SCANOBJ
+    {
+        get => scanObj;
+    }
+
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -76,25 +84,31 @@ public class CharacterController : MonoBehaviour
             anim.SetBool("isChange", false);
         }
 
-        if (down && v == 1)
+
+        // Raycast 방향 전환
+        if (v == 1)
         {
             dir = Vector3.up;
-            Debug.Log("1");
         }
-        else if (down && v == -1)
+        else if (v == -1)
         {
             dir = Vector3.down;
-            Debug.Log("2");
         }
-        else if (left && h == -1)
+        else if (h == -1)
         {
             dir = Vector3.left;
-            Debug.Log("3");
         }
-        else if (left && h == 1)
+        else if (h == 1)
         {
             dir = Vector3.right;
-            Debug.Log("4");
+        }
+
+
+        // ScanObject
+        if(Input.GetKeyDown(KeyCode.Space) && scanObj != null)
+        {
+            Debug.Log(scanObj.name);
+            town.Action();
         }
 
     }
@@ -104,7 +118,20 @@ public class CharacterController : MonoBehaviour
         Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v); // 대각선 이동 방지
         rig.velocity = moveVec * moveSpeed;
 
+
+        // RayCast로 object 감지
         Debug.DrawRay(rig.position, dir * 0.7f, new Color(0, 1, 0));
+        // Object Layer 외에 감지 안함
+        RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dir, 0.7f, LayerMask.GetMask("Object"));
+
+        if(rayHit.collider != null)
+        {
+            scanObj = rayHit.collider.gameObject;
+        }
+        else
+        {
+            scanObj = null;
+        }
 
     }
 }
