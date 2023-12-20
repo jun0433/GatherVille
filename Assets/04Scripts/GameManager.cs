@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEngine.UI;
+using TMPro;
 
 public enum SceneName
 {
@@ -127,4 +129,5 @@ public class GameManager : Singleton<GameManager>
     }
 
     #endregion
+
 }

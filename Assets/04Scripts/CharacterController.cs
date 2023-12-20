@@ -10,7 +10,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 3f;
 
-    public TownManager town = new TownManager();
 
     private Rigidbody2D rig;
     private CapsuleCollider2D col;
@@ -20,11 +19,8 @@ public class CharacterController : MonoBehaviour
     private bool isHorizonMove;
     private Vector3 dir;
 
+    private GameObject obj;
     private GameObject scanObj;
-    public GameObject SCANOBJ
-    {
-        get => scanObj;
-    }
 
     private void Awake()
     {
@@ -35,6 +31,8 @@ public class CharacterController : MonoBehaviour
         {
             Debug.Log("CharacterController.cs - Awake() - anim 참조 실패");
         }
+
+        obj = GameObject.Find("text");
     }
 
     // Update is called once per frame
@@ -108,7 +106,7 @@ public class CharacterController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && scanObj != null)
         {
             Debug.Log(scanObj.name);
-            town.Action();
+            obj.GetComponent<TownManager>().Action(scanObj);
         }
 
     }

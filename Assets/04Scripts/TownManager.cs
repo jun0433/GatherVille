@@ -6,15 +6,19 @@ using TMPro;
 
 public class TownManager : MonoBehaviour
 {
-    public TextMeshProUGUI dialogText;
-    public GameObject obj;
+    private TextMeshProUGUI dialogText;
+    private GameObject obj;
 
-    private CharacterController characterController = new CharacterController();
-
-
-    public void Action()
+    private void Awake()
     {
-        obj = characterController.SCANOBJ;
+        obj = GameObject.Find("DialogText");
+        dialogText = obj.GetComponent<TextMeshProUGUI>();
+    }
+
+
+    public void Action(GameObject scan)
+    {
+        obj = scan;
         dialogText.text = obj.name;
     }
 }
