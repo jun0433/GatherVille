@@ -6,19 +6,35 @@ using TMPro;
 
 public class TownManager : MonoBehaviour
 {
-    private TextMeshProUGUI dialogText;
+    private BoxCollider2D col;
+    private TextMeshProUGUI action;
     private GameObject obj;
+
+    private GameObject player;
 
     private void Awake()
     {
-        obj = GameObject.Find("DialogText");
-        dialogText = obj.GetComponent<TextMeshProUGUI>();
+        obj = GameObject.Find("Action");
+        action = obj.GetComponent<TextMeshProUGUI>();
+        if (!TryGetComponent<TextMeshProUGUI>(out action))
+        {
+            Debug.Log("TownManager.cs - Awake() - action 참조 실패");
+        }
+        
     }
 
-
-    public void Action(GameObject scan)
+    private void Update()
     {
-        obj = scan;
-        dialogText.text = obj.name;
+        player = GameObject.Find("Player");
+        if (player != null)
+        {
+            Vector3 newPos = player.transform.position;
+            newPos.y += 75f;
+            action.transform.position = newPos;
+        }
+
     }
+
+    
+
 }

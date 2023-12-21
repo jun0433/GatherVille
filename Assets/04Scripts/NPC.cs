@@ -30,6 +30,8 @@ public class NPC : MonoBehaviour
         }
     }
 
+
+
     /*private void OnTriggerEnter2D(Collider other)
     {
         if(!isOn && other.CompareTag("NPC"))

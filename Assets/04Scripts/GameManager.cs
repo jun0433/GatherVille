@@ -11,6 +11,7 @@ public enum SceneName
     LoadingScene,
     TitleScene,
     TownScene,
+    HomeScene,
 
 }
 
@@ -24,6 +25,14 @@ public class PlayerData
 public class GameManager : Singleton<GameManager>
 {
     private PlayerData pData;
+    private GameObject obj;
+    private TextMeshProUGUI dialogText;
+    public bool isAction;
+    public bool ISACTION
+    {
+        get => isAction;
+    }
+    private GameObject dialog;
 
     // PlayerData를 다른 클래스에서 참조할 수 있게
     public PlayerData PlayerInfo
@@ -31,8 +40,14 @@ public class GameManager : Singleton<GameManager>
         get => pData;
     }
 
+
     private void Awake()
     {
+        obj = GameObject.Find("DialogText");
+        dialogText = obj.GetComponent<TextMeshProUGUI>();
+        dialog = GameObject.Find("Dialog");
+
+
         base.Awake();
         datapath = Application.persistentDataPath + "/save";
         pData = new PlayerData();
@@ -45,6 +60,23 @@ public class GameManager : Singleton<GameManager>
     {
         LoadData();
     }
+
+    public void Action(GameObject scan)
+    {
+        if (isAction)
+        {
+            isAction = false;
+            LeanTween.scale(dialog, Vector2.zero, 0.7f).setEase(LeanTweenType.easeInOutElastic);
+        }
+        else
+        {
+            isAction = true;
+            LeanTween.scale(dialog, Vector2.one, 0.7f).setEase(LeanTweenType.easeInOutElastic);
+            obj = scan;
+            dialogText.text = obj.name;
+        }
+    }
+
 
     #region _Save&Delete_
     private string datapath; // 데이터 경로를 저장할 변수
@@ -129,5 +161,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     #endregion
+
+    
 
 }

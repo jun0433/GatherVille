@@ -10,7 +10,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 3f;
 
-
     private Rigidbody2D rig;
     private CapsuleCollider2D col;
     private Animator anim;
@@ -21,6 +20,10 @@ public class CharacterController : MonoBehaviour
 
     private GameObject obj;
     private GameObject scanObj;
+    public GameObject SCANOBJ
+    {
+        get => scanObj;
+    }
 
     private void Awake()
     {
@@ -39,11 +42,12 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         UserInput();
-
+        UserAction();
     }
 
     private void UserInput()
     {
+
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
@@ -102,14 +106,31 @@ public class CharacterController : MonoBehaviour
         }
 
 
-        // ScanObject
-        if(Input.GetKeyDown(KeyCode.Space) && scanObj != null)
-        {
-            Debug.Log(scanObj.name);
-            obj.GetComponent<TownManager>().Action(scanObj);
-        }
+
 
     }
+
+
+    private void UserAction()
+    {
+        // ScanObject
+        if (Input.GetKeyDown(KeyCode.Space) && scanObj != null)
+        {
+            GameManager.Inst.Action(scanObj);
+
+            // 집으로 가는 액션
+            if(scanObj.name == "House")
+            {
+                GameManager.Inst.AsyncLoadingNextScene(SceneName.HomeScene);
+            }
+            if(scanObj.name == "Water")
+            {
+
+            }
+        }
+    }
+
+    
 
     private void FixedUpdate()
     {
