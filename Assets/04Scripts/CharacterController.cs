@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
-public class CharacterController : MonoBehaviour
+public class CharacterController : Singleton<CharacterController>
 {
     [SerializeField]
     private float moveSpeed = 3f;
@@ -18,15 +18,26 @@ public class CharacterController : MonoBehaviour
     private bool isHorizonMove;
     private Vector3 dir;
 
+
+    private TownManager town;
+
     private GameObject obj;
     private GameObject scanObj;
     public GameObject SCANOBJ
     {
         get => scanObj;
     }
+    public bool isAction;
+    public bool ISACTION
+    {
+        get => isAction;
+    }
+
+
 
     private void Awake()
     {
+        town = GameObject.Find("TownManager").GetComponent<TownManager>();
         rig = GetComponent<Rigidbody2D>();
         rig.GetComponent<Rigidbody2D>().gravityScale = 0f;
         col = GetComponent<CapsuleCollider2D>();
@@ -50,7 +61,6 @@ public class CharacterController : MonoBehaviour
 
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
-
 
         bool right = Input.GetButtonUp("Horizontal");
         bool left = Input.GetButtonDown("Horizontal");
@@ -111,19 +121,26 @@ public class CharacterController : MonoBehaviour
     }
 
 
+
+    
+
     private void UserAction()
     {
         // ScanObject
-        if (Input.GetKeyDown(KeyCode.Space) && scanObj != null)
+        if (Input.GetKeyDown(KeyCode.G) && scanObj != null)
         {
-            GameManager.Inst.Action(scanObj);
+            town.Action(scanObj);
 
             // 집으로 가는 액션
             if(scanObj.name == "House")
             {
                 GameManager.Inst.AsyncLoadingNextScene(SceneName.HomeScene);
             }
-            if(scanObj.name == "Water")
+            else if(scanObj.name == "Water")
+            {
+
+            }
+            else if(scanObj.name == "NPC01")
             {
 
             }
