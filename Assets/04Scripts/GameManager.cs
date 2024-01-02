@@ -94,7 +94,7 @@ public class GameManager : Singleton<GameManager>
     public void CreateUserData(string newNickName)
     {
         pData.userNickName = newNickName;
-        pData.gold = 0;
+        pData.gold = 5000;
         pData.uidCounter = 0;
     }
 

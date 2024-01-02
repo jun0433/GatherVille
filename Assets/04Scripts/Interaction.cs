@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class Interaction : MonoBehaviour
+public class Interaction : Singleton<Interaction>
 {
     private TextMeshProUGUI interaction;
     private GameObject obj;
@@ -20,23 +20,19 @@ public class Interaction : MonoBehaviour
         interaction.enabled = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Water"))
-        {
-            interaction.enabled = true;
-            Fishing();
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
+    public void Closed()
     {
         interaction.enabled = false;
     }
 
-    public void Fishing()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        interaction.enabled = true;
         interaction.text = "Press [G] Key";
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Closed();
     }
 }

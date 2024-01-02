@@ -129,6 +129,7 @@ public class CharacterController : Singleton<CharacterController>
         // ScanObject
         if (Input.GetKeyDown(KeyCode.G) && scanObj != null)
         {
+            Interaction.Inst.Closed();
             town.Action(scanObj);
 
             // 집으로 가는 액션
@@ -168,6 +169,11 @@ public class CharacterController : Singleton<CharacterController>
         {
             scanObj = null;
         }
+
+    }
+
+    private void Fishing()
+    {
 
     }
 }
