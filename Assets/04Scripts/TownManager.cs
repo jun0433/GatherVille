@@ -32,15 +32,9 @@ public class TownManager : DialogBase, IDialog
 
     }
 
-    private void Update()
+
+    public void Communicate(GameObject scan)
     {
-
-    }
-
-    public void Action(GameObject scan)
-    {
-
-        Debug.Log(scan.name );
         if (CharacterController.Inst.isAction)
         {
             CharacterController.Inst.isAction = false;

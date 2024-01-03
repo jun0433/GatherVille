@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Fishing : Singleton<Fishing>
@@ -11,32 +12,71 @@ public class Fishing : Singleton<Fishing>
     private Vector2 vector;
     private float time;
     private float another;
+    private GameObject myChar;
+    private TextMeshProUGUI interaction;
+    private bool flag;
+    public bool FLAG
+    {
+        get => flag;
+    }
 
     private void Awake()
     {
+        myChar = GameObject.Find("MyCharacter");
         obj = GameObject.Find("Fishing");
         fishing = obj.GetComponent<Image>();
-        vector.y = gameObject.transform.position.y + 80;
+        obj = GameObject.Find("Interaction");
+        interaction = obj.GetComponent<TextMeshProUGUI>();
+
+        vector.y = myChar.transform.position.y + 125;
         fishing.transform.localPosition = vector;
         fishing.enabled = false;
+    }
 
-        Fish();
+    private void Update()
+    {
+        obj = CharacterController.Inst.SCANOBJ;
+        if (flag == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            // todo: 상호작용 하기
+            // 물에서 낚시
+            if (obj.CompareTag("Water"))
+            {
+
+            }
+            // 나무에서 벌목
+            else if (obj.CompareTag("Tree"))
+            {
+
+            }
+
+
+        }
     }
 
     public void Fish()
     {
-        time = Random.Range(0f, 2f);
+        time = Random.Range(2f, 5f);
 
-        Debug.Log(time);
-        another = 0f;
-        while(time >= another)
-        {
-            Debug.Log(another);
-            another += Time.deltaTime;
-        }
-        fishing.enabled = true;
-
-
+        Invoke("StartFishing", time);
     }
-    
+
+    public void StartFishing()
+    {
+        fishing.enabled = true;
+        flag = true;
+        interaction.enabled = true;
+        interaction.text = "Press [Space]";
+        float finish = Random.Range(0.5f, 1f);
+        Invoke("EndFishing", finish);
+    }
+
+    public void EndFishing()
+    {
+        fishing.enabled = false;
+        interaction.enabled = false;
+        interaction.text = "Press [G] Key";
+        flag = false;
+    }
+
 }
