@@ -21,6 +21,7 @@ public class PlayerData
     public string userNickName;
     public int gold;
     public int uidCounter;
+    public Inventory inventory;
 }
 public class GameManager : Singleton<GameManager>
 {
@@ -45,6 +46,17 @@ public class GameManager : Singleton<GameManager>
         datapath = Application.persistentDataPath + "/save";
         pData = new PlayerData();
 
+        #region _TableData_
+        table = Resources.Load<TownGame>("TownGame");
+
+        for(int i = 0; i<table.ItemData.Count; i++)
+        {
+            dicItemData.Add(table.ItemData[i].id, table.ItemData[i]);
+        }
+
+
+        #endregion
+
 
         UpdateGMinfo();
     }
@@ -54,8 +66,15 @@ public class GameManager : Singleton<GameManager>
         LoadData();
     }
 
+    #region _TableData_
+    private TownGame table;
+    private Dictionary<int, ItemData_Entity> dicItemData = new Dictionary<int, ItemData_Entity>();
 
-
+    public bool GetItemData(int itemID, out ItemData_Entity data)
+    {
+        return dicItemData.TryGetValue(itemID, out data);
+    }
+    #endregion
 
     #region _Save&Delete_
     private string datapath; // 데이터 경로를 저장할 변수
@@ -102,6 +121,26 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
+
+    #region _Items_
+
+    public bool GetItem(InventoryitemData newItem)
+    {
+        if (!pData.inventory.ISFull())
+        {
+            pData.inventory.AddItem(newItem);
+            return true;
+        }
+        return false;
+    }
+
+    public void DeleteItem(InventoryitemData deleteItem)
+    {
+        pData.inventory.DeleteItem(deleteItem);
+    }
+
+    #endregion
+
     #region _ReadPlayerData_
     public int PlayerGold
     {
@@ -122,6 +161,10 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public Inventory Inven
+    {
+        get => pData.inventory;
+    }
     #endregion
 
     #region _SceneChange_
