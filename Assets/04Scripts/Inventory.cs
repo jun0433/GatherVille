@@ -16,7 +16,7 @@ public class InventoryitemData
 [System.Serializable]
 public class Inventory
 {
-    private int maxItemCount = 99;
+    private int maxItemCount = 28;
     public int MAXITEMCOUNT
     {
         get => maxItemCount;
@@ -39,29 +39,17 @@ public class Inventory
         int index = FindItemIndex(newItem); // 중복된 아이템인지 확인
 
         // 테이블 데이터가 존재하는지 체크
-        if (true)
+        if (index == -1)
         {
-            // 장착 가능한 아이템인 경우
-            if (true)
-            {
-                // 중복되지 않도록 값 생성
-                newItem.uid = 1;
-                newItem.amount = 1;
-                items.Add(newItem);
-                curItemCount++;
-            }
-            // 중첩이 가능한 아이템 && 이미 가지고 있는 경우
-            else if(-1 < index)
-            {
-                items[index].amount += newItem.amount;
-            }
-            // 중첩 가능 && 처음 습득
-            else
-            {
-                newItem.uid = -1;
-                items.Add(newItem);
-                curItemCount++;
-            }
+            // 처음 습득
+            // 중복되지 않도록 값 생성
+            newItem.uid = GameManager.Inst.PlayerUID;
+            items.Add(newItem);
+            curItemCount++;
+        }
+        else
+        {
+            items[index].amount += newItem.amount;
         }
     }
 

@@ -7,6 +7,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     private GameObject invenObj;
+    private InventoryUI inventoryUI;
     private TextMeshProUGUI gold;
     private TextMeshProUGUI ID;
 
@@ -19,8 +20,9 @@ public class UIManager : MonoBehaviour
     {
         gold = GameObject.Find("Gold").GetComponent<TextMeshProUGUI>();
         ID = GameObject.Find("ID").GetComponent<TextMeshProUGUI>();
-        invenObj = GameObject.Find("Popup_Inven");
-
+        invenObj = GameObject.Find("Inventory");
+        inventoryUI = invenObj.GetComponent<InventoryUI>();
+        isOpenInventory = false;
 
 
         invenBtn = GameObject.Find("InvenBtn").GetComponent<Button>();
@@ -47,6 +49,7 @@ public class UIManager : MonoBehaviour
         isOpenInventory = !isOpenInventory;
         if(isOpenInventory == true)
         {
+            inventoryUI.RefreshIcon();
             invenObj.LeanScale(Vector2.one, 0.7f).setEase(LeanTweenType.easeInOutElastic);
         }
         else

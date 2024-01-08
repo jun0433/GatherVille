@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
         #region _TableData_
         table = Resources.Load<TownGame>("TownGame");
 
-        for(int i = 0; i<table.ItemData.Count; i++)
+        for(int i = 0; i< table.ItemData.Count; i++)
         {
             dicItemData.Add(table.ItemData[i].id, table.ItemData[i]);
         }

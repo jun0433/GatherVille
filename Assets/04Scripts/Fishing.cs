@@ -19,8 +19,7 @@ public class Fishing : Singleton<Fishing>
     {
         get => flag;
     }
-    private const int a = 1;
-    
+    InventoryitemData data = new InventoryitemData();
 
     private void Awake()
     {
@@ -44,9 +43,9 @@ public class Fishing : Singleton<Fishing>
             // 물에서 낚시
             if (obj.CompareTag("Water"))
             {
-                InventoryitemData data;
-                // data.itemID = a;
+                data.itemID = FishTable();
                 GameManager.Inst.GetItem(data);
+                flag = false;
             }
             // 나무에서 벌목
             else if (obj.CompareTag("Tree"))
@@ -88,7 +87,7 @@ public class Fishing : Singleton<Fishing>
     {
         int num = Random.Range(0, 100);
         int id;
-        if (num > 99)
+        if (num > 50)
         {
             id = 1001;
         }
