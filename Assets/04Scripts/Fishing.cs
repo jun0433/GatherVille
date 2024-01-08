@@ -19,7 +19,6 @@ public class Fishing : Singleton<Fishing>
     {
         get => flag;
     }
-    InventoryitemData data = new InventoryitemData();
 
     private void Awake()
     {
@@ -43,6 +42,7 @@ public class Fishing : Singleton<Fishing>
             // ¹°¿¡¼­ ³¬½Ã
             if (obj.CompareTag("Water"))
             {
+                InventoryitemData data = new InventoryitemData();
                 data.itemID = FishTable();
                 GameManager.Inst.GetItem(data);
                 flag = false;

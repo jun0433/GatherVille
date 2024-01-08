@@ -29,7 +29,6 @@ public class Inventory
         set => curItemCount = value;
     }
 
-
     [SerializeField]
     private List<InventoryitemData> items = new List<InventoryitemData>();
 
@@ -44,12 +43,13 @@ public class Inventory
             // 처음 습득
             // 중복되지 않도록 값 생성
             newItem.uid = GameManager.Inst.PlayerUID;
+            newItem.amount = 1;
             items.Add(newItem);
             curItemCount++;
         }
         else
         {
-            items[index].amount += newItem.amount;
+            items[index].amount++;
         }
     }
 
