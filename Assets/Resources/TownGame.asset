@@ -16,38 +16,38 @@ MonoBehaviour:
   - id: 1001
     name: "\uBCF5\uC5B4"
     iconImg: ItemIcon/fish
-    sellGold: 1
-    explain: test1
+    sellGold: 50
+    explain: "\uB3C5\uC131\uC774 \uC788\uC73C\uB2C8 \uC870\uC2EC\uD558\uC790."
   - id: 1002
-    name: "\uC0DD\uC120"
+    name: "\uD3C9\uBC94\uD55C \uBB3C\uACE0\uAE30"
     iconImg: ItemIcon/fish2
-    sellGold: 2
-    explain: test2
+    sellGold: 10
+    explain: "\uD754\uD788 \uBCF4\uC774\uB294 \uD3C9\uBC94\uD55C \uBB3C\uACE0\uAE30\uC774\uB2E4."
   - id: 1003
     name: "\uC0C8\uC6B0"
     iconImg: ItemIcon/shrimp
-    sellGold: 3
-    explain: test3
+    sellGold: 80
+    explain: "\uBFD4\uC5D0 \uCC14\uB9AC\uC9C0 \uC54A\uAC8C \uC870\uC2EC\uD558\uC790."
   - id: 1004
     name: "\uC624\uC9D5\uC5B4"
     iconImg: ItemIcon/squid
-    sellGold: 4
-    explain: test4
+    sellGold: 200
+    explain: "\uB2E4\uB9AC\uAC00 10\uAC1C\uC778\uC9C0 \uC138\uC5B4\uBCF4\uC790."
   - id: 1005
     name: "\uC870\uAC1C"
     iconImg: ItemIcon/shell
-    sellGold: 5
-    explain: test5
+    sellGold: 100
+    explain: "\uC9C4\uC8FC\uAC00 \uB4E4\uC5B4\uC788\uC73C\uBA74 \uC88B\uACA0\uB2E4."
   - id: 1006
-    name: "\uBF08\uC0DD\uC120"
+    name: "\uBB3C\uACE0\uAE30 \uBF08"
     iconImg: ItemIcon/fish skeleton
-    sellGold: 6
-    explain: test6
+    sellGold: 5
+    explain: "\uD544\uC694\uD560 \uC218 \uC788\uC73C\uB2C8 \uCC59\uACA8\uB450\uC790."
   - id: 1007
     name: "\uBF08"
     iconImg: ItemIcon/bone
-    sellGold: 7
-    explain: test7
+    sellGold: 1
+    explain: "\uB531\uD788 \uC4F8\uBAA8\uAC00 \uC5C6\uC744 \uAC83 \uAC19\uB2E4."
   - id: 2001
     name: "\uB3C4\uD1A0\uB9AC"
     iconImg: ItemIcon/acorn

@@ -8,6 +8,8 @@ using UnityEngine;
 public class InventoryitemData
 {
     public int uid; // 고유 ID
+    public string itemName; // 아이템 이름
+    public string explain; // 아이템 설명
     public int itemID; // 테이블 ID
     public int amount; // 갯수
 }
@@ -43,8 +45,8 @@ public class Inventory
             // 처음 습득
             // 중복되지 않도록 값 생성
             newItem.uid = GameManager.Inst.PlayerUID;
-            newItem.amount = 1;
             items.Add(newItem);
+            newItem.amount = 1;
             curItemCount++;
         }
         else

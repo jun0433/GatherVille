@@ -145,6 +145,10 @@ public class CharacterController : Singleton<CharacterController>
             {
 
             }
+            else if(scanObj.name == "Tree")
+            {
+                Fishing.Inst.Fish();
+            }
         }
     }
 

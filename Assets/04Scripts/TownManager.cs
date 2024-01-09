@@ -12,15 +12,15 @@ public class TownManager : DialogBase, IDialog
 
     private GameObject dialog;
     private GameObject player;
-    private TextMeshProUGUI dialogText;
+    public TextMeshProUGUI dialogText;
+    List<InventoryitemData> dataList;
 
-
-
+    private Inventory inventory;
 
 
     private void Awake()
     {
-
+        inventory = GameManager.Inst.Inven;
         obj = GameObject.Find("DialogText");
         dialogText = obj.GetComponent<TextMeshProUGUI>();
 
@@ -33,25 +33,35 @@ public class TownManager : DialogBase, IDialog
     }
 
 
-    public void Communicate(GameObject scan)
+    public void Communicate(InventoryitemData data)
     {
-        if (CharacterController.Inst.isAction)
+        int itemID = Fishing.Inst.ITEMID;
+        // inventory 정보 갱신
+        if (!GameManager.Inst.GetItemData(itemID, out ItemData_Entity itemData))
         {
-            CharacterController.Inst.isAction = false;
-            DialogClose();
+            Debug.Log("ItemShopSlot.cs - communicate() - itemData 참조 실패");
+            return;
         }
-        else
+
+
+        CharacterController.Inst.isAction = true;
+        DialogOpen();
+        if(itemData.id < 2000)
         {
-            CharacterController.Inst.isAction = true;
-            DialogOpen();
-            obj = scan;
-            dialogText.text = obj.name;
+            dialogText.text = itemData.name + "를 잡았다." + "\n" + itemData.explain;
         }
+        else if(itemData.id < 3000)
+        {
+            dialogText.text = itemData.name + "를 수확했다." + "\n" + itemData.explain;
+        }
+
     }
 
     public void DialogOpen()
     {
         LeanTween.scale(dialog, Vector3.one, 0.7f).setEase(LeanTweenType.easeInOutElastic);
+
+        Invoke("DialogClose", 1.5f);
     }
 
     public void DialogClose()
