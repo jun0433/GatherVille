@@ -85,15 +85,31 @@ public class Fishing : Singleton<Fishing>
 
     public int FishTable()
     {
-        int num = Random.Range(0, 100);
+        int num = Random.Range(0, 200);
         int id;
-        if (num > 50)
+        if (num < 80)
+        {
+            id = 1002;
+        }
+        else if(num < 110)
         {
             id = 1001;
         }
+        else if(num < 140)
+        {
+            id = 1006;
+        }
+        else if(num < 170)
+        {
+            id = 1007;
+        }
+        else if(num < 190)
+        {
+            id = 1005;
+        }
         else
         {
-            id = 1002;
+            id = 1004;
         }
 
         return id;
