@@ -8,6 +8,8 @@ TagManager:
   - House
   - Water
   - Tree
+  - Flower
+  - Ocean
   layers:
   - Default
   - TransparentFX

@@ -27,11 +27,6 @@ public class CharacterController : Singleton<CharacterController>
     {
         get => scanObj;
     }
-    public bool isAction;
-    public bool ISACTION
-    {
-        get => isAction;
-    }
 
 
 
@@ -130,7 +125,6 @@ public class CharacterController : Singleton<CharacterController>
         if (Input.GetKeyDown(KeyCode.G) && scanObj != null)
         {
             Interaction.Inst.Closed();
-            // town.Action(scanObj);
 
             // 집으로 가는 액션
             if(scanObj.name == "House")
@@ -139,15 +133,20 @@ public class CharacterController : Singleton<CharacterController>
             }
             else if(scanObj.name == "Water")
             {
-                Fishing.Inst.Fish();
+                PlayerAction.Inst.Action();
             }
-            else if(scanObj.name == "NPC01")
-            {
 
-            }
             else if(scanObj.name == "Tree")
             {
-                Fishing.Inst.Fish();
+                PlayerAction.Inst.Action();
+            }
+            else if(scanObj.name == "Flower")
+            {
+                PlayerAction.Inst.Action();
+            }
+            else if (scanObj.name == "NPC01")
+            {
+                town.CommunicateNPC(scanObj);
             }
         }
     }

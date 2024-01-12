@@ -33,26 +33,39 @@ public class TownManager : DialogBase, IDialog
     }
 
 
+    public void CommunicateNPC(GameObject obj)
+    {
+        DialogOpen();
+        dialogText.text = obj.ToString();
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            DialogClose();
+        }
+    }
+
     public void Communicate(InventoryitemData data)
     {
-        int itemID = Fishing.Inst.ITEMID;
+        int itemID = PlayerAction.Inst.ITEMID;
         // inventory 정보 갱신
         if (!GameManager.Inst.GetItemData(itemID, out ItemData_Entity itemData))
         {
-            Debug.Log("ItemShopSlot.cs - communicate() - itemData 참조 실패");
+            Debug.Log("TownManager.cs - communicate() - itemData 참조 실패");
             return;
         }
 
 
-        CharacterController.Inst.isAction = true;
         DialogOpen();
-        if(itemData.id < 2000)
+        if (itemData.id < 2000)
         {
             dialogText.text = itemData.name + "를 잡았다." + "\n" + itemData.explain;
         }
-        else if(itemData.id < 3000)
+        else if (itemData.id < 3000)
         {
             dialogText.text = itemData.name + "를 수확했다." + "\n" + itemData.explain;
+        }
+        else if (itemData.id < 4000)
+        {
+            dialogText.text = itemData.name + "를 채집했다." + "\n" + itemData.explain;
         }
 
     }

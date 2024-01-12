@@ -51,103 +51,107 @@ MonoBehaviour:
   - id: 2001
     name: "\uB3C4\uD1A0\uB9AC"
     iconImg: ItemIcon/acorn
-    sellGold: 8
-    explain: test8
+    sellGold: 5
+    explain: "\uB2E4\uB78C\uC950\uC758 \uAE30\uBD84\uC744 \uB290\uB084 \uC218 \uC788\uC744
+      \uAC83 \uAC19\uB2E4."
   - id: 2002
     name: "\uC0AC\uACFC"
     iconImg: ItemIcon/apple
     sellGold: 9
-    explain: test9
+    explain: "\uD55C \uC785 \uBCA0\uC5B4 \uBB3C\uC5B4\uBCF4\uC790."
   - id: 2003
     name: "\uC544\uBCF4\uCE74\uB3C4"
     iconImg: ItemIcon/avocado
     sellGold: 10
-    explain: test10
+    explain: "\uB2E4\uC774\uC5B4\uD2B8\uC5D0 \uB3C4\uC6C0\uC774 \uB420 \uAC83 \uAC19\uB2E4."
   - id: 2004
     name: "\uBC14\uB098\uB098"
     iconImg: ItemIcon/bananas
     sellGold: 11
-    explain: test11
+    explain: "\uC2DD\uC774\uC12C\uC720\uAC00 \uD48D\uBD80\uD574\uBCF4\uC778\uB2E4."
   - id: 2005
     name: "\uBE14\uB8E8\uBCA0\uB9AC"
     iconImg: ItemIcon/blueberry
     sellGold: 12
-    explain: test12
+    explain: "\uBBF8\uC6A9\uC5D0 \uB3C4\uC6C0\uC774 \uB420 \uAC83 \uAC19\uB2E4."
   - id: 2006
     name: "\uCCB4\uB9AC"
     iconImg: ItemIcon/cherry
     sellGold: 13
-    explain: test13
+    explain: "\uC575\uB450\uB791 \uD5F7\uAC08\uB9AC\uC9C0 \uB9D0\uC790."
   - id: 2007
     name: "\uCF54\uCF54\uB11B"
     iconImg: ItemIcon/cocount
     sellGold: 14
-    explain: test14
+    explain: "\uC5F4\uAE30 \uD798\uB4E4 \uAC83 \uAC19\uB2E4."
   - id: 2008
     name: "\uD3EC\uB3C4"
     iconImg: ItemIcon/grapes
     sellGold: 15
-    explain: test15
+    explain: "\uC774 \uD3EC\uB3C4\uB294 \uC2E0\uD3EC\uB3C4\uC77C\uAC70\uC57C."
   - id: 2009
     name: "\uCCAD\uD3EC\uB3C4"
     iconImg: ItemIcon/grapes1
     sellGold: 16
-    explain: test16
+    explain: "\uD0D5\uD6C4\uB8E8 \uC81C\uC791\uC5D0 \uC0AC\uC6A9\uB420 \uAC83 \uAC19\uB2E4."
   - id: 2010
     name: "\uD0A4\uC704"
     iconImg: ItemIcon/kiwi
     sellGold: 17
-    explain: test17
+    explain: "\uC5F0\uC721\uC791\uC6A9\uC5D0 \uC88B\uB2E4."
   - id: 2011
     name: "\uBC30"
     iconImg: ItemIcon/pear
     sellGold: 18
-    explain: test18
+    explain: "\uC2DC\uC6D0\uD55C \uB9DB\uC774 \uC77C\uD488\uC77C \uAC83 \uAC19\uB2E4."
   - id: 2012
     name: "\uBCF5\uC22D\uC544"
     iconImg: ItemIcon/peach
     sellGold: 19
-    explain: test19
+    explain: "\uC54C\uB7EC\uC9C0\uAC00 \uC788\uB2E4\uBA74 \uC8FC\uC758\uD558\uC790."
   - id: 2013
     name: "\uC624\uB80C\uC9C0"
     iconImg: ItemIcon/orange
     sellGold: 20
-    explain: test20
+    explain: "\uC791\uC740\uAC74 \uADE4\uC774 \uC544\uB2C8\uB77C \uB35C \uC790\uB780
+      \uAC83 \uAC19\uB2E4."
   - id: 2014
     name: "\uB538\uAE30"
     iconImg: ItemIcon/straberry
     sellGold: 21
-    explain: test21
+    explain: "\uC0C8\uCF64\uB2EC\uCF64 \uB9DB\uC788\uC5B4 \uBCF4\uC778\uB2E4."
   - id: 2015
     name: "\uD1A0\uB9C8\uD1A0"
     iconImg: ItemIcon/tomato
     sellGold: 22
-    explain: test22
+    explain: "\uD1A0\uB9C8\uD1A0\uAC00 \uC65C \uB098\uBB34\uC5D0\uC11C \uB098\uC624\uC9C0?"
   - id: 2016
     name: "\uD30C\uC778\uC560\uD50C"
     iconImg: ItemIcon/pineapple
     sellGold: 23
-    explain: test23
+    explain: "\uAECD\uC9C8\uC744 \uC798 \uBC97\uACA8\uC11C \uBA39\uC790."
   - id: 3001
     name: "\uB3C5\uBC84\uC12F"
     iconImg: ItemIcon/amanita
     sellGold: 24
-    explain: test24
+    explain: "\uBA39\uC73C\uBA74 \uC808\uBA85\uD560 \uAC83 \uAC19\uB2E4. \uC870\uC2EC\uD788
+      \uB2E4\uB8E8\uC790."
   - id: 3002
     name: "\uC544\uC2A4\uD30C\uB77C\uAC70\uC2A4"
     iconImg: ItemIcon/asparagus
     sellGold: 25
-    explain: test25
+    explain: "\uC2A4\uD14C\uC774\uD06C\uB791 \uACC1\uB4E4\uC5EC \uBA39\uAE30 \uC88B\uC544\uBCF4\uC778\uB2E4."
   - id: 3003
     name: "\uBE44\uD2B8"
     iconImg: ItemIcon/beet
     sellGold: 26
-    explain: test26
+    explain: "\uB108\uBB34 \uB9CE\uC774 \uBA39\uC73C\uBA74 \uBCF5\uD1B5\uC744 \uC720\uBC1C\uD558\uB2C8
+      \uC870\uC2EC\uD558\uC790."
   - id: 3004
     name: "\uCF69"
     iconImg: ItemIcon/bobs
     sellGold: 27
-    explain: test27
+    explain: "\uCF69\uC73C\uB85C \uBB34\uC5C7\uC744 \uD574\uBA39\uC744\uC9C0 \uACE0\uBBFC\uD574\uBCF4\uC790."
   - id: 3005
     name: "\uBE0C\uB85C\uCF5C\uB9AC"
     iconImg: ItemIcon/broccoli
@@ -227,17 +231,20 @@ MonoBehaviour:
     name: "\uACE0\uCD94"
     iconImg: ItemIcon/redpepper
     sellGold: 43
-    explain: test43
+    explain: "\uB9E4\uC6B8\uC9C0 \uC548\uB9E4\uC6B8\uC9C0\uB294 \uD55C \uC785 \uBA39\uC5B4\uBCF4\uACE0
+      \uD310\uB2E8\uD558\uC790."
   - id: 3021
     name: "\uCC28"
     iconImg: ItemIcon/tea
     sellGold: 44
-    explain: test44
+    explain: "\uCC3B\uC78E\uC744 \uB9D0\uB824 \uB179\uCC28\uB97C \uB9C8\uC2E4 \uC218
+      \uC788\uC744\uAC70 \uAC19\uB2E4."
   - id: 3022
     name: "\uB9C8\uB298"
     iconImg: ItemIcon/Untitled-1
     sellGold: 45
-    explain: test45
+    explain: "\uD55C\uAD6D\uC778\uC758 \uD5A5\uC2E0\uB8CC \uB9C8\uB298 \uC794\uB729
+      \uCE90\uAC00\uC790."
   - id: 3023
     name: "\uBCBC"
     iconImg: ItemIcon/wheat

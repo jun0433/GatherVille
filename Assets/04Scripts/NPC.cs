@@ -14,39 +14,54 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private NPC_TYPE type;
     private bool isOn = false;
-    private Collider2D col;
+    private CapsuleCollider2D col;
 
     [SerializeField]
     private IDialog dialog;
 
     private GameObject obj;
-
+    private string popupObjName = "None";
 
     private void Awake()
     {
-        if (!TryGetComponent<Collider2D>(out col))
+        if (!TryGetComponent<CapsuleCollider2D>(out col))
         {
             Debug.Log("NPC.cs - Awake() - col 참조 실패");
+        }
+
+        obj = GameObject.Find(popupObjName);
+        if(obj != null)
+        {
+            if(!obj.TryGetComponent<IDialog>(out dialog))
+            {
+                Debug.Log("NPC.cs - Awake() - dialog 참조 실패");
+            }
+
+        }
+        else
+        {
+            Debug.Log("NPC.cs - Awake() - 팝업 오브젝트를 찾지 못함");
         }
     }
 
 
-
-    /*private void OnTriggerEnter2D(Collider other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!isOn && other.CompareTag("NPC"))
+        if(collision.gameObject.CompareTag("NPC"))
         {
             isOn = true;
             dialog.DialogOpen();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if(isOn && other.CompareTag("NPC"))
+        if (isOn && collision.gameObject.CompareTag("NPC"))
         {
             isOn = false;
             dialog.DialogClose();
         }
-    }*/
+    }
+
 }
