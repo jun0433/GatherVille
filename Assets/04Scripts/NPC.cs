@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public enum NPC_TYPE
 {
@@ -8,7 +10,7 @@ public enum NPC_TYPE
     NT_Luna,
 }
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IPopup, IDialog
 {
 
     [SerializeField]
@@ -16,52 +18,99 @@ public class NPC : MonoBehaviour
     private bool isOn = false;
     private CapsuleCollider2D col;
 
-    [SerializeField]
-    private IDialog dialog;
-
+    private GameObject scanObj;
     private GameObject obj;
-    private string popupObjName = "None";
+    private TextMeshProUGUI dialogText;
+
+    private Button exitBtn;
+    private GameObject dialog;
+    private bool talkNPC;
+
+    [SerializeField]
+    private GameObject popupObj;
+
+
+    private TownManager town;
 
     private void Awake()
     {
+        dialog = GameObject.Find("Dialog");
+        if (dialog == null)
+        {
+            Debug.Log("TownManager.cs - Awake() - dialog 호출 실패");
+        }
+        town = GameObject.Find("TownManager").GetComponent<TownManager>();
         if (!TryGetComponent<CapsuleCollider2D>(out col))
         {
             Debug.Log("NPC.cs - Awake() - col 참조 실패");
         }
+        obj = GameObject.Find("DialogText");
+        dialogText = obj.GetComponent<TextMeshProUGUI>();
 
-        obj = GameObject.Find(popupObjName);
-        if(obj != null)
-        {
-            if(!obj.TryGetComponent<IDialog>(out dialog))
-            {
-                Debug.Log("NPC.cs - Awake() - dialog 참조 실패");
-            }
+        exitBtn = GameObject.Find("ExitBtn").GetComponent<Button>();
 
-        }
-        else
-        {
-            Debug.Log("NPC.cs - Awake() - 팝업 오브젝트를 찾지 못함");
-        }
+        exitBtn.onClick.AddListener(OnClick_ExitBtn);
+
+        talkNPC = false;
+
+        
     }
 
+
+    private void Update()
+    {
+        scanObj = CharacterController.Inst.SCANOBJ;
+        /*if (scanObj.CompareTag("NPC") && Input.GetKeyDown(KeyCode.G))
+        {
+            if (scanObj.name == "NPC01")
+            {
+
+            }
+        }*/
+        if (Input.GetKeyDown(KeyCode.Y) && talkNPC)
+        {
+            PopupOpen();
+        }
+        else if (Input.GetKeyDown(KeyCode.N) && talkNPC)
+        {
+            DialogClose();
+        }
+
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("NPC"))
-        {
-            isOn = true;
-            dialog.DialogOpen();
-        }
+        dialogText.text = "나한테 사거나 팔고 싶은 물건이 있어?\n" + "Press Key[Y/N]";
+        DialogOpen();
     }
 
-    
-    private void OnCollisionExit2D(Collision2D collision)
+    public void PopupOpen()
     {
-        if (isOn && collision.gameObject.CompareTag("NPC"))
-        {
-            isOn = false;
-            dialog.DialogClose();
-        }
+        LeanTween.scale(popupObj, Vector3.one, 0.7f).setEase(LeanTweenType.clamp);
+        DialogClose();
     }
 
+    public void PopupClose()
+    {
+        LeanTween.scale(popupObj, Vector3.zero, 0.7f).setEase(LeanTweenType.clamp);
+        dialogText.text = "더 하고 싶은 일이 있어?\n" + "Press Key[Y/N]";
+        DialogOpen();
+    }
+
+    public void DialogOpen()
+    {
+        LeanTween.scale(dialog, Vector3.one, 0.7f).setEase(LeanTweenType.easeInOutElastic);
+        talkNPC = true;
+    }
+
+    public void DialogClose()
+    {
+        LeanTween.scale(dialog, Vector3.zero, 0.1f).setEase(LeanTweenType.easeInOutElastic);
+        talkNPC = false;
+    }
+
+    public void OnClick_ExitBtn()
+    {
+        PopupClose();
+    }
 }

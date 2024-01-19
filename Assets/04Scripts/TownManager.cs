@@ -11,6 +11,7 @@ public class TownManager : DialogBase, IDialog
     private GameObject obj;
 
     private GameObject dialog;
+
     private GameObject player;
     public TextMeshProUGUI dialogText;
     List<InventoryitemData> dataList;
@@ -29,19 +30,8 @@ public class TownManager : DialogBase, IDialog
         {
             Debug.Log("TownManager.cs - Awake() - dialog 호출 실패");
         }
-
     }
 
-
-    public void CommunicateNPC(GameObject obj)
-    {
-        DialogOpen();
-        dialogText.text = obj.ToString();
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            DialogClose();
-        }
-    }
 
     public void Communicate(InventoryitemData data)
     {
@@ -67,14 +57,12 @@ public class TownManager : DialogBase, IDialog
         {
             dialogText.text = itemData.name + "를 채집했다." + "\n" + itemData.explain;
         }
-
+        Invoke("DialogClose", 1.5f);
     }
 
     public void DialogOpen()
     {
         LeanTween.scale(dialog, Vector3.one, 0.7f).setEase(LeanTweenType.easeInOutElastic);
-
-        Invoke("DialogClose", 1.5f);
     }
 
     public void DialogClose()

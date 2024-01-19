@@ -54,7 +54,6 @@ public class GameManager : Singleton<GameManager>
             dicItemData.Add(table.ItemData[i].id, table.ItemData[i]);
         }
 
-
         #endregion
 
 

@@ -144,10 +144,6 @@ public class CharacterController : Singleton<CharacterController>
             {
                 PlayerAction.Inst.Action();
             }
-            else if (scanObj.name == "NPC01")
-            {
-                town.CommunicateNPC(scanObj);
-            }
         }
     }
 

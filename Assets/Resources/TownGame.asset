@@ -255,3 +255,38 @@ MonoBehaviour:
     iconImg: ItemIcon/yellow pepper
     sellGold: 47
     explain: test47
+  - id: 10001
+    name: "\uB3C4\uB07C"
+    iconImg: EquipmentIcon/Axe
+    sellGold: 2500
+    explain: test1
+  - id: 10002
+    name: "\uBC14\uAD6C\uB2C8"
+    iconImg: EquipmentIcon/Basket
+    sellGold: 2500
+    explain: test2
+  - id: 10003
+    name: "\uB09A\uC2DC\uB300"
+    iconImg: EquipmentIcon/FishingRod
+    sellGold: 2500
+    explain: test3
+  - id: 10004
+    name: "\uAD2D\uC774"
+    iconImg: EquipmentIcon/Hoe
+    sellGold: 2500
+    explain: test4
+  - id: 10005
+    name: "\uACE1\uAD2D\uC774"
+    iconImg: EquipmentIcon/Pick
+    sellGold: 2500
+    explain: test5
+  - id: 10006
+    name: "\uC0BD"
+    iconImg: EquipmentIcon/Shovel
+    sellGold: 2500
+    explain: test6
+  - id: 10007
+    name: "\uBB3C\uBFCC\uB9AC\uAC1C"
+    iconImg: EquipmentIcon/WateringCan
+    sellGold: 2500
+    explain: test7

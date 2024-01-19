@@ -27,6 +27,7 @@ public class Interaction : Singleton<Interaction>
         interaction.enabled = false;
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         scan = CharacterController.Inst.SCANOBJ;
