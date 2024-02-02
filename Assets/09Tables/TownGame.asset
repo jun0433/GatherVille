@@ -1,0 +1,292 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b7b2d0ad9154c4b97ae7a347d1615f, type: 3}
+  m_Name: TownGame
+  m_EditorClassIdentifier: 
+  ItemData:
+  - id: 1001
+    name: "\uBCF5\uC5B4"
+    iconImg: ItemIcon/fish
+    sellGold: 50
+    explain: "\uB3C5\uC131\uC774 \uC788\uC73C\uB2C8 \uC870\uC2EC\uD558\uC790."
+  - id: 1002
+    name: "\uD3C9\uBC94\uD55C \uBB3C\uACE0\uAE30"
+    iconImg: ItemIcon/fish2
+    sellGold: 10
+    explain: "\uD754\uD788 \uBCF4\uC774\uB294 \uD3C9\uBC94\uD55C \uBB3C\uACE0\uAE30\uC774\uB2E4."
+  - id: 1003
+    name: "\uC0C8\uC6B0"
+    iconImg: ItemIcon/shrimp
+    sellGold: 80
+    explain: "\uBFD4\uC5D0 \uCC14\uB9AC\uC9C0 \uC54A\uAC8C \uC870\uC2EC\uD558\uC790."
+  - id: 1004
+    name: "\uC624\uC9D5\uC5B4"
+    iconImg: ItemIcon/squid
+    sellGold: 200
+    explain: "\uB2E4\uB9AC\uAC00 10\uAC1C\uC778\uC9C0 \uC138\uC5B4\uBCF4\uC790."
+  - id: 1005
+    name: "\uC870\uAC1C"
+    iconImg: ItemIcon/shell
+    sellGold: 100
+    explain: "\uC9C4\uC8FC\uAC00 \uB4E4\uC5B4\uC788\uC73C\uBA74 \uC88B\uACA0\uB2E4."
+  - id: 1006
+    name: "\uBB3C\uACE0\uAE30 \uBF08"
+    iconImg: ItemIcon/fish skeleton
+    sellGold: 5
+    explain: "\uD544\uC694\uD560 \uC218 \uC788\uC73C\uB2C8 \uCC59\uACA8\uB450\uC790."
+  - id: 1007
+    name: "\uBF08"
+    iconImg: ItemIcon/bone
+    sellGold: 1
+    explain: "\uB531\uD788 \uC4F8\uBAA8\uAC00 \uC5C6\uC744 \uAC83 \uAC19\uB2E4."
+  - id: 2001
+    name: "\uB3C4\uD1A0\uB9AC"
+    iconImg: ItemIcon/acorn
+    sellGold: 5
+    explain: "\uB2E4\uB78C\uC950\uC758 \uAE30\uBD84\uC744 \uB290\uB084 \uC218 \uC788\uC744
+      \uAC83 \uAC19\uB2E4."
+  - id: 2002
+    name: "\uC0AC\uACFC"
+    iconImg: ItemIcon/apple
+    sellGold: 9
+    explain: "\uD55C \uC785 \uBCA0\uC5B4 \uBB3C\uC5B4\uBCF4\uC790."
+  - id: 2003
+    name: "\uC544\uBCF4\uCE74\uB3C4"
+    iconImg: ItemIcon/avocado
+    sellGold: 10
+    explain: "\uB2E4\uC774\uC5B4\uD2B8\uC5D0 \uB3C4\uC6C0\uC774 \uB420 \uAC83 \uAC19\uB2E4."
+  - id: 2004
+    name: "\uBC14\uB098\uB098"
+    iconImg: ItemIcon/bananas
+    sellGold: 11
+    explain: "\uC2DD\uC774\uC12C\uC720\uAC00 \uD48D\uBD80\uD574\uBCF4\uC778\uB2E4."
+  - id: 2005
+    name: "\uBE14\uB8E8\uBCA0\uB9AC"
+    iconImg: ItemIcon/blueberry
+    sellGold: 12
+    explain: "\uBBF8\uC6A9\uC5D0 \uB3C4\uC6C0\uC774 \uB420 \uAC83 \uAC19\uB2E4."
+  - id: 2006
+    name: "\uCCB4\uB9AC"
+    iconImg: ItemIcon/cherry
+    sellGold: 13
+    explain: "\uC575\uB450\uB791 \uD5F7\uAC08\uB9AC\uC9C0 \uB9D0\uC790."
+  - id: 2007
+    name: "\uCF54\uCF54\uB11B"
+    iconImg: ItemIcon/cocount
+    sellGold: 14
+    explain: "\uC5F4\uAE30 \uD798\uB4E4 \uAC83 \uAC19\uB2E4."
+  - id: 2008
+    name: "\uD3EC\uB3C4"
+    iconImg: ItemIcon/grapes
+    sellGold: 15
+    explain: "\uC774 \uD3EC\uB3C4\uB294 \uC2E0\uD3EC\uB3C4\uC77C\uAC70\uC57C."
+  - id: 2009
+    name: "\uCCAD\uD3EC\uB3C4"
+    iconImg: ItemIcon/grapes1
+    sellGold: 16
+    explain: "\uD0D5\uD6C4\uB8E8 \uC81C\uC791\uC5D0 \uC0AC\uC6A9\uB420 \uAC83 \uAC19\uB2E4."
+  - id: 2010
+    name: "\uD0A4\uC704"
+    iconImg: ItemIcon/kiwi
+    sellGold: 17
+    explain: "\uC5F0\uC721\uC791\uC6A9\uC5D0 \uC88B\uB2E4."
+  - id: 2011
+    name: "\uBC30"
+    iconImg: ItemIcon/pear
+    sellGold: 18
+    explain: "\uC2DC\uC6D0\uD55C \uB9DB\uC774 \uC77C\uD488\uC77C \uAC83 \uAC19\uB2E4."
+  - id: 2012
+    name: "\uBCF5\uC22D\uC544"
+    iconImg: ItemIcon/peach
+    sellGold: 19
+    explain: "\uC54C\uB7EC\uC9C0\uAC00 \uC788\uB2E4\uBA74 \uC8FC\uC758\uD558\uC790."
+  - id: 2013
+    name: "\uC624\uB80C\uC9C0"
+    iconImg: ItemIcon/orange
+    sellGold: 20
+    explain: "\uC791\uC740\uAC74 \uADE4\uC774 \uC544\uB2C8\uB77C \uB35C \uC790\uB780
+      \uAC83 \uAC19\uB2E4."
+  - id: 2014
+    name: "\uB538\uAE30"
+    iconImg: ItemIcon/straberry
+    sellGold: 21
+    explain: "\uC0C8\uCF64\uB2EC\uCF64 \uB9DB\uC788\uC5B4 \uBCF4\uC778\uB2E4."
+  - id: 2015
+    name: "\uD1A0\uB9C8\uD1A0"
+    iconImg: ItemIcon/tomato
+    sellGold: 22
+    explain: "\uD1A0\uB9C8\uD1A0\uAC00 \uC65C \uB098\uBB34\uC5D0\uC11C \uB098\uC624\uC9C0?"
+  - id: 2016
+    name: "\uD30C\uC778\uC560\uD50C"
+    iconImg: ItemIcon/pineapple
+    sellGold: 23
+    explain: "\uAECD\uC9C8\uC744 \uC798 \uBC97\uACA8\uC11C \uBA39\uC790."
+  - id: 3001
+    name: "\uB3C5\uBC84\uC12F"
+    iconImg: ItemIcon/amanita
+    sellGold: 24
+    explain: "\uBA39\uC73C\uBA74 \uC808\uBA85\uD560 \uAC83 \uAC19\uB2E4. \uC870\uC2EC\uD788
+      \uB2E4\uB8E8\uC790."
+  - id: 3002
+    name: "\uC544\uC2A4\uD30C\uB77C\uAC70\uC2A4"
+    iconImg: ItemIcon/asparagus
+    sellGold: 25
+    explain: "\uC2A4\uD14C\uC774\uD06C\uB791 \uACC1\uB4E4\uC5EC \uBA39\uAE30 \uC88B\uC544\uBCF4\uC778\uB2E4."
+  - id: 3003
+    name: "\uBE44\uD2B8"
+    iconImg: ItemIcon/beet
+    sellGold: 26
+    explain: "\uB108\uBB34 \uB9CE\uC774 \uBA39\uC73C\uBA74 \uBCF5\uD1B5\uC744 \uC720\uBC1C\uD558\uB2C8
+      \uC870\uC2EC\uD558\uC790."
+  - id: 3004
+    name: "\uCF69"
+    iconImg: ItemIcon/bobs
+    sellGold: 27
+    explain: "\uCF69\uC73C\uB85C \uBB34\uC5C7\uC744 \uD574\uBA39\uC744\uC9C0 \uACE0\uBBFC\uD574\uBCF4\uC790."
+  - id: 3005
+    name: "\uBE0C\uB85C\uCF5C\uB9AC"
+    iconImg: ItemIcon/broccoli
+    sellGold: 28
+    explain: test28
+  - id: 3006
+    name: "\uC591\uC0C1\uCD94"
+    iconImg: ItemIcon/cabbage
+    sellGold: 29
+    explain: test29
+  - id: 3007
+    name: "\uB2F9\uADFC"
+    iconImg: ItemIcon/carrot
+    sellGold: 30
+    explain: test30
+  - id: 3008
+    name: "\uC0D0\uB7EC\uB9AC"
+    iconImg: ItemIcon/celery
+    sellGold: 31
+    explain: test31
+  - id: 3009
+    name: "\uC591\uC1A1\uC774"
+    iconImg: ItemIcon/Champignon
+    sellGold: 32
+    explain: test32
+  - id: 3010
+    name: "\uC625\uC218\uC218"
+    iconImg: ItemIcon/corn
+    sellGold: 33
+    explain: test33
+  - id: 3011
+    name: "\uC624\uC774"
+    iconImg: ItemIcon/cucumber
+    sellGold: 34
+    explain: test34
+  - id: 3012
+    name: "\uD5C8\uBE0C"
+    iconImg: ItemIcon/dill
+    sellGold: 35
+    explain: test35
+  - id: 3013
+    name: "\uC0B0\uC0BC"
+    iconImg: ItemIcon/mandrake root
+    sellGold: 36
+    explain: test36
+  - id: 3014
+    name: "\uBBFC\uD2B8"
+    iconImg: ItemIcon/mint
+    sellGold: 37
+    explain: test37
+  - id: 3015
+    name: "\uBC84\uC12F"
+    iconImg: ItemIcon/mushroom
+    sellGold: 38
+    explain: test38
+  - id: 3016
+    name: "\uC591\uD30C"
+    iconImg: ItemIcon/onion
+    sellGold: 39
+    explain: test39
+  - id: 3017
+    name: "\uD638\uBC15"
+    iconImg: ItemIcon/pumpiking
+    sellGold: 40
+    explain: test40
+  - id: 3018
+    name: "\uBB34"
+    iconImg: ItemIcon/radish
+    sellGold: 41
+    explain: test41
+  - id: 3019
+    name: "\uD64D\uB2F9\uBB34"
+    iconImg: ItemIcon/radish2
+    sellGold: 42
+    explain: test42
+  - id: 3020
+    name: "\uACE0\uCD94"
+    iconImg: ItemIcon/redpepper
+    sellGold: 43
+    explain: "\uB9E4\uC6B8\uC9C0 \uC548\uB9E4\uC6B8\uC9C0\uB294 \uD55C \uC785 \uBA39\uC5B4\uBCF4\uACE0
+      \uD310\uB2E8\uD558\uC790."
+  - id: 3021
+    name: "\uCC28"
+    iconImg: ItemIcon/tea
+    sellGold: 44
+    explain: "\uCC3B\uC78E\uC744 \uB9D0\uB824 \uB179\uCC28\uB97C \uB9C8\uC2E4 \uC218
+      \uC788\uC744\uAC70 \uAC19\uB2E4."
+  - id: 3022
+    name: "\uB9C8\uB298"
+    iconImg: ItemIcon/Untitled-1
+    sellGold: 45
+    explain: "\uD55C\uAD6D\uC778\uC758 \uD5A5\uC2E0\uB8CC \uB9C8\uB298 \uC794\uB729
+      \uCE90\uAC00\uC790."
+  - id: 3023
+    name: "\uBCBC"
+    iconImg: ItemIcon/wheat
+    sellGold: 46
+    explain: test46
+  - id: 3024
+    name: "\uD30C\uD504\uB9AC\uCE74"
+    iconImg: ItemIcon/yellow pepper
+    sellGold: 47
+    explain: test47
+  - id: 10001
+    name: "\uB3C4\uB07C"
+    iconImg: EquipmentIcon/Axe
+    sellGold: 2500
+    explain: test1
+  - id: 10002
+    name: "\uBC14\uAD6C\uB2C8"
+    iconImg: EquipmentIcon/Basket
+    sellGold: 2500
+    explain: test2
+  - id: 10003
+    name: "\uB09A\uC2DC\uB300"
+    iconImg: EquipmentIcon/FishingRod
+    sellGold: 2500
+    explain: test3
+  - id: 10004
+    name: "\uAD2D\uC774"
+    iconImg: EquipmentIcon/Hoe
+    sellGold: 2500
+    explain: test4
+  - id: 10005
+    name: "\uACE1\uAD2D\uC774"
+    iconImg: EquipmentIcon/Pick
+    sellGold: 2500
+    explain: test5
+  - id: 10006
+    name: "\uC0BD"
+    iconImg: EquipmentIcon/Shovel
+    sellGold: 2500
+    explain: test6
+  - id: 10007
+    name: "\uBB3C\uBFCC\uB9AC\uAC1C"
+    iconImg: EquipmentIcon/WateringCan
+    sellGold: 2500
+    explain: test7
